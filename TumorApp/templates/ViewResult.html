@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detection of Liver Tumors</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .main {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .logo h1 {
+            text-align: center;
+            padding: 20px 0;
+            margin: 0;
+            font-size: 2em;
+            color: #007BFF;
+        }
+        .menu_nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #007BFF;
+            border-top: 3px solid #0056b3;
+        }
+        .menu_nav ul li {
+            margin: 0;
+        }
+        .menu_nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .menu_nav ul li a:hover {
+            background-color: #0056b3;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content_bg {
+            background-color: #eaeaea;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .hbg img {
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .mainbar {
+            margin-top: 20px;
+        }
+        .mainbar img {
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .sidebar {
+            margin-top: 20px;
+        }
+        .clr {
+            clear: both;
+        }
+        .fbg {
+            background-color: #007BFF;
+            padding: 10px 0;
+            text-align: center;
+            color: white;
+        }
+        .fbg p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="logo">
+            <h1><span>Detection of Liver Tumors</span></h1>
+        </div>
+        <div class="menu_nav">
+            <ul>
+                <li><a href="{% url 'UpdateProfile' %}">UPDATE PROFILE</a></li>
+                <li><a href="{% url 'Detection' %}">DETECT TUMOR</a></li>
+                <li><a href="{% url 'index' %}">LOGOUT</a></li>
+                <li><a href="{% url 'patientlist' %}">DISPLAY PATIENTS</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="content_bg">
+                <div class="hbg">
+                    <img src="{% static 'images/liverresult.jpeg' %}" width="100%" height="auto" alt="">
+                </div>
+                <div class="mainbar">
+                    <center>{{ data|safe }}</center>
+                    <img src="data:image/png;base64, {{ img }}" alt="graph" style="width: 100%; height: auto;">
+                </div>
+                <div class="sidebar">
+                    <!-- Sidebar content if any -->
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="fbg">
+            <div class="footer_resize">
+                <p>&copy; 2024 Detection of Liver Tumors. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

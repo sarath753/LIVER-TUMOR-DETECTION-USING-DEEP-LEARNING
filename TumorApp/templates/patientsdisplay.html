@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef; /* Light gray background */
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            text-align: center;
+            margin-top: 20px;
+            background-image: url("{% static 'images/gif1.gif' %}"); /* Background image */
+            background-size: cover; /* Cover the whole header */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent repeating the image */
+            height: 300px; /* Adjust height as needed */
+            color: #fff; /* Text color to contrast with background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .header h1 {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .container {
+            margin-top: 30px;
+            max-width: 1200px;
+        }
+        .btn-primary, .btn-danger, .btn-success {
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        .card {
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            border-bottom: 1px solid #0056b3;
+            font-weight: bold;
+        }
+        .card-body {
+            background-color: #ffffff;
+            padding: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+            display: inline-block;
+            width: 200px; /* Adjust width as needed */
+        }
+        .btn-back {
+            margin: 20px 0;
+        }
+        .text-center {
+            color: #007bff;
+            text-align: center; /* Center-align the text */
+        }
+        .text-muted {
+            color: #6c757d;
+            text-align: center; /* Center-align the text */
+        }
+        .card p {
+            margin-bottom: 10px;
+        }
+        .form-container {
+            margin: 30px auto;
+            max-width: 800px;
+        }
+        .search-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .search-form input[type="text"] {
+            width: 300px;
+            margin-right: 10px;
+        }
+        .search-form button {
+            height: 38px; /* Adjust height to align with input */
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .button-container .btn {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PATIENTS STATISTICS</h1>
+    </div>
+    <div class="container">
+        <div class="button-container">
+            <button class="btn btn-primary btn-back">
+                <a href="{% url 'AdminScreen' %}" style="color: white; text-decoration: none;">BACK</a>
+            </button>
+            <a href="{% url 'patientslistwithtumor' %}" class="btn btn-danger">TUMOR DETECTED PEOPLE</a>
+            <a href="{% url 'patientslistwithouttumor' %}" class="btn btn-success">TUMOR NOT DETECTED PEOPLE</a>
+        </div>
+
+        <div class="form-container">
+            <form method="post" class="mt-3 search-form">
+                {% csrf_token %}
+                <label for="patientname">ENTER PATIENT NAME:</label>
+                <input type="text" id="patientname" name="patientname" class="form-control" placeholder="Enter Patient Name">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+
+        <p class="mt-3 text-muted">The total Number of patients Screened: {{ totalpatients }}</p>
+        <p class="text-muted">Total Number of Tumors affected patients: {{ affectedpatients }}</p>
+        <p class="text-muted">Total Number of Tumor unaffected Patients: {{ unaffectedpatients }}</p>
+        
+        <div class="row mt-3">
+            {% if patient_details %}
+                <h1 class="text-center mb-4">Patient Details</h1>
+                <div class="col-md-4 mx-auto">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ patient_details.name }}
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Age:</strong> {{ patient_details.age }}</p>
+                            <p><strong>Sex:</strong> {{ patient_details.sex }}</p>
+                            <p><strong>Mobile Number:</strong> {{ patient_details.phonenumber }}</p>
+                            <p><strong>Diagnosis:</strong> {{ patient_details.result }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

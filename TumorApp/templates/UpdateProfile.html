@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Detection of Liver Tumors</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #2e8b57 0%, #98fb98 100%);
+    overflow: hidden;
+    color: #333;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    position: relative;
+    text-align: center;
+}
+
+.header {
+    text-align: center;
+}
+
+.logo h1 {
+    font-size: 2.5em;
+    color: #2e8b57;
+    text-shadow: 2px 2px #98fb98;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.menu_nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+}
+
+.menu_nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.menu_nav ul li a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #2e8b57;
+    padding: 10px 20px;
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 5px;
+}
+
+.menu_nav ul li a:hover {
+    color: #fff;
+    background-color: #2e8b57;
+}
+
+form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 12px;
+    margin: 10px 0;
+    width: 80%;
+    max-width: 350px;
+    border: 2px solid #2e8b57;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #98fb98;
+    box-shadow: 0 0 8px rgba(46, 139, 87, 0.5);
+    outline: none;
+}
+
+input[type="submit"] {
+    padding: 12px 25px;
+    margin: 20px 0;
+    background: #2e8b57;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+input[type="submit"]:hover {
+    background: #98fb98;
+    transform: scale(1.05);
+}
+
+@keyframes fall {
+    0% {
+        top: -10%;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 110%;
+        opacity: 0;
+        transform: rotate(360deg);
+    }
+}
+
+.plus-symbol {
+    position: absolute;
+    font-size: 50px;
+    color: #2e8b57;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fall linear infinite;
+}
+
+.plus-symbol:nth-child(1) { left: 10%; animation-duration: 10s; animation-delay: 0s; }
+.plus-symbol:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 2s; }
+.plus-symbol:nth-child(3) { left: 30%; animation-duration: 8s; animation-delay: 4s; }
+.plus-symbol:nth-child(4) { left: 40%; animation-duration: 14s; animation-delay: 6s; }
+.plus-symbol:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: 8s; }
+.plus-symbol:nth-child(6) { left: 60%; animation-duration: 13s; animation-delay: 10s; }
+.plus-symbol:nth-child(7) { left: 70%; animation-duration: 9s; animation-delay: 12s; }
+.plus-symbol:nth-child(8) { left: 80%; animation-duration: 15s; animation-delay: 14s; }
+.plus-symbol:nth-child(9) { left: 90%; animation-duration: 7s; animation-delay: 16s; }
+
+</style>
+<script>
+function validate(formObj) {
+    if (formObj.t1.value.length == 0) {
+        alert("Please Enter new Username");
+        formObj.t1.focus();
+        return false;
+    }
+    if (formObj.t2.value.length == 0) {
+        alert("Please Enter new Password");
+        formObj.t2.focus();
+        return false;
+    }
+    formObj.actionUpdateData.value = "update";
+    return true;
+}
+</script>
+</head>
+<body>
+<div class="main">
+    <div class="header">
+        <div class="logo">
+            <h1><span>Detection of Liver Tumors</span></h1>
+        </div>
+    </div>
+    <div class="content">
+        <div class="menu_nav">
+            <ul>
+                <li><a href="{% url 'UpdateProfile' %}">Update Profile</a></li>
+                <li><a href="{% url 'Detection' %}">Detect Tumor</a></li>
+                <li><a href="{% url 'index' %}">Logout</a></li>
+            </ul>
+        </div>
+        <center>
+            <form name="f1" method="post" action="{% url 'UpdateProfileAction' %}" onsubmit="return validate(this);">
+                {% csrf_token %}
+                <h2><b>Update Account Screen</b></h2>
+                <font size="" color="red"><center>{{ data }}</center></font>
+                <table align="center" width="50%">
+                    <tr>
+                        <td style="text-align:right; padding-right: 10px;"><font size='' color=black>New Username</font></td>
+                        <td><input type="text" name="t1" style="font-family: 'Comic Sans MS'; width: 100%;" size="25"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right; padding-right: 10px;"><font size='' color=black>New Password</font></td>
+                        <td><input name="t2" type="password" style="width: 100%;" size="25"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Update"></td>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    </div>
+</div>
+<div class="plus-symbol">Stay Healthy</div>
+<div class="plus-symbol">Stay Healthy</div>
+<div class="plus-symbol">Stay Healthy</div>
+<div class="plus-symbol">Stay Healthy</div>
+<div class="plus-symbol">Stay Healthy</div>
+{% comment %} <div class="plus-symbol">Stay Healthy</div>
+<div class="plus-symbol">Stay Healthy</div>
+<div class="plus-symbol">Stay Healthy</div>
+<div class="plus-symbol">Stay Healthy</div> {% endcomment %}
+</body>
+</html>

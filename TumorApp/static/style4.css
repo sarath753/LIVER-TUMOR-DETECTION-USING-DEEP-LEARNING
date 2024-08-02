@@ -1,0 +1,149 @@
+/* style1.css */
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9; /* Light gray background */
+    color: #333; /* Dark text color for better readability */
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    background-color: #1e1e1e; /* Slightly lighter dark background for header */
+    color: #ffffff;
+    padding: 30px;
+    text-align: center;
+}
+
+.header .logo h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-family: 'Georgia', serif;
+}
+
+.header .logo h1 span {
+    color: #00bcd4; /* Bright cyan for contrast */
+}
+
+.menu_nav {
+    background-color: #121212; /* Even darker background for navbar */
+    padding: 15px 0;
+    text-align: center;
+}
+
+.menu_nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu_nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+.menu_nav ul li a {
+    color: #00bcd4; /* Bright cyan text color */
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 5px;
+}
+
+.menu_nav ul li a:hover {
+    color: #ffffff;
+    background-color: #00bcd4; /* Bright cyan hover effect */
+}
+
+.container {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff; /* White background for content area */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+ /* Corrected URL */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+}
+
+.hbg {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.hbg img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid #00bcd4; /* Matching border color */
+}
+
+form {
+    background-color: #1e1e1e; /* Slightly lighter dark background for the form */
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+h2 {
+    color: #00bcd4; /* Bright cyan for headings */
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+}
+
+.error {
+    color: #ff5252; /* Bright red for error messages */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    margin: 0 auto;
+    border-spacing: 15px;
+}
+
+td {
+    vertical-align: top;
+}
+
+input[type="text"], select, input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #666; /* Lighter gray border */
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #444; /* Darker input backgrounds */
+    color: #e0e0e0;
+}
+
+input[type="text"]::placeholder {
+    color: #bbb; /* Even lighter placeholder text */
+}
+
+input[type="submit"] {
+    background-color: #00bcd4; /* Bright cyan for buttons */
+    color: #ffffff;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0097a7; /* Slightly darker cyan on hover */
+}

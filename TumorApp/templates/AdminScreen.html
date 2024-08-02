@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detection of Liver Tumors</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header {
+    text-align: center;
+    height: 50px;
+    padding: 10px;
+    padding-top: 2px;
+    padding-bottom: 15px;
+    background-color: rgb(37, 150, 190);
+    color: white;
+    font-size: 20px; /* Decreased header size */
+
+}
+
+.menu_nav {
+    background-color: #8A9EA7;
+}
+
+.menu_nav ul {
+    list-style: none;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+
+.menu_nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.menu_nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px; /* Increased navbar size */
+}
+
+.menu_nav ul li a:hover {
+    color: navy;
+    background-color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+    height: 300px;
+    background: url("{% static 'images/slideshow.jpeg' %}") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    background: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides h2 {
+    color: rgb(198, 233, 231);
+}
+
+.mySlides p {
+    color: white;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    margin-top:30px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+.team-container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.team-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(240, 240, 240, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.team-member p {
+    font-size: 1em;
+    color: navy;
+}
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h2>Detection of Liver Tumors</h2>
+        </div>
+        <div class="menu_nav">
+            <ul>
+                <li><a href="{% url 'UpdateProfile' %}">Update Profile</a></li>
+                <li><a href="{% url 'Detection' %}">Detect Tumor</a></li>
+                <li><a href="{% url 'index' %}">Logout</a></li>
+                <li><a href="{% url 'patientlist' %}">Display Patients</a></li>
+            </ul>
+        </div>
+        <div class="content" style="background-color: #E9F1EF;">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <h2>Mission</h2>
+                    <p>Our mission is to leverage cutting-edge deep learning technology to provide accurate and timely detection of liver tumors, improving early diagnosis and patient outcomes.</p>
+                </div>
+                <div class="mySlides fade">
+                    <h2>Vision</h2>
+                    <p>We envision a future where automated tumor detection systems, powered by artificial intelligence, revolutionize healthcare by delivering precise diagnostics and supporting life-saving treatments worldwide</p>
+                </div>
+                <div class="mySlides fade">
+                    <h2>Research and Development</h2>
+                    <p>Our team is at the forefront of medical research, developing innovative techniques for liver tumor detection. We collaborate with leading institutions to publish our findings and improve our algorithms continuously. Our research aims to enhance diagnostic accuracy and patient care.</p>
+                </div>
+                <div class="mySlides fade">
+                    <h2>About Us</h2>
+                    <p>We are a dedicated team of medical professionals, engineers, and researchers committed to advancing liver tumor detection using state-of-the-art deep learning algorithms. Our goal is to transform the landscape of liver cancer diagnosis, making it more accurate, accessible, and efficient for patients worldwide.</p>
+                </div>
+            </div>
+            <br>
+            <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+        <div class="team-container">
+            <h2 style="text-align: center;">Our Team</h2>
+            <div class="team-box">
+                <div class="team-member">
+                    <img src="{% static 'images/sai.jpg' %}" alt="Team Member 1" class="team-img">
+                    <p>Guggilam Venkata Sarath Sai (Developer)</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'images/tharshith.jpg' %}" alt="Team Member 2" class="team-img">
+                    <p>Reddy Tharshith (ML Engineer)</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'images/koushi.jpg' %}" alt="Team Member 3" class="team-img">
+                    <p>Konduru Koushik Varma (ML Engineer)</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'images/nithin4.jpg' %}" alt="Team Member 4" class="team-img">
+                    <p>Jamisetty Nithin (ML Engineer)</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'images/kiran2.jpg' %}" alt="Team Member 5" class="team-img">
+                    <p>Kolli Kiran Kumar (ML Engineer)</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'images/kundu.jpg' %}" alt="Team Member 6" class="team-img">
+                    <p>Kundu Satya Charan (ML Engineer)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 3000); // Change image every 5 seconds
+        }
+    </script>
+</body>
+</html>

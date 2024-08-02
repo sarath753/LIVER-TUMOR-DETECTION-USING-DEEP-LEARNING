@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('{% static "images/liverbg.jpg" %}');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header {
+    text-align: center;
+    height: 50px;
+    padding: 10px;
+    padding-top: 3px;
+    padding-bottom: 10px;
+    background-color: rgb(37, 150, 190);
+    color: white;
+    font-size: 20px; /* Decreased header size */
+}
+
+.menu_nav {
+    background-color: #8A9EA7;
+}
+
+.menu_nav ul {
+    list-style: none;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+
+.menu_nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.menu_nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px; /* Increased navbar size */
+}
+
+.menu_nav ul li a:hover {
+    color: navy;
+    background-color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+    height: 300px;
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    background: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides h2 {
+    color: navy;
+}
+
+.mySlides p {
+    color: black;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    margin-top:30px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+.team-container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.team-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(240, 240, 240, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.team-member p {
+    font-size: 1em;
+    color: navy;
+}

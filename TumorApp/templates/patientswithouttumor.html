@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .card-body {
+            background-color: #ffffff;
+        }
+        .btn-back {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn-primary btn-back"><a href="{% url 'patientlist' %}" style="color: white; text-decoration: none;">BACK</a></button>
+        
+        <h1 class="text-center mb-4">Patients List Without Tumor</h1>
+        <div class="row">
+            {% for patient in patients_list %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ patient.name }}
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Age:</strong> {{ patient.age }}</p>
+                            <p><strong>Sex:</strong> {{ patient.sex }}</p>
+                            <p><strong>Mobile Number:</strong> {{ patient.phonenumber }}</p>
+                            <p><strong>Diagnosis:</strong> {{ patient.result }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

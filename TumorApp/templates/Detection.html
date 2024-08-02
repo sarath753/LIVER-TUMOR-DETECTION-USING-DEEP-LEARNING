@@ -1,0 +1,253 @@
+{% load static %}
+<html>
+<head>
+    <title>Detection of Liver Tumors</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <style>
+        /* style1.css */
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9; /* Light gray background */
+            color: #333; /* Dark text color for better readability */
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            background-color: rgb(37, 150, 190); /* Dark gray background for header */
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header .logo h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-family: 'Georgia', serif;
+        }
+
+        .header .logo h1 span {
+            color: white; /* Bright cyan for contrast */
+        }
+
+        .menu_nav {
+            background-color: rgb(198, 233, 231); /* Darker gray background for navbar */
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .menu_nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu_nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        .menu_nav ul li a {
+            color: #00bcd4; /* Bright cyan text color */
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 15px;
+            transition: color 0.3s, background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        .menu_nav ul li a:hover {
+            color: #ffffff;
+            background-color: #00bcd4; /* Bright cyan hover effect */
+        }
+
+        .container {
+            display: flex;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff; /* White background for content area */
+            border-radius: 10px; /* Rounded corners for a modern look */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+        }
+
+        .background-image {
+            flex: 1;
+            border-radius: 10px 0 0 10px; /* Rounded corners only on the left side */
+            overflow: hidden; /* Ensure the image does not overflow the container */
+            height: 100%; /* Full height of the container */
+            position: relative; /* Position for absolute child */
+        }
+
+        .background-image img {
+            margin-top: 60px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the image covers the container */
+            display: block; /* Remove bottom space */
+        }
+
+        .form-container {
+            flex: 1;
+            padding: 30px;
+            max-width: 600px;
+            margin-left: 20px; /* Space between image and form */
+            background-color: #E1E1E1; /* Dark gray background for the form */
+            border-radius: 0 10px 10px 0; /* Rounded corners only on the right side */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            
+        }
+
+        .form-container h2 {
+            color: #00bcd4; /* Bright cyan for headings */
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Georgia', serif;
+        }
+
+        .error {
+            color: #ff5252; /* Bright red for error messages */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin: 0 auto;
+            border-spacing: 15px;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        input[type="text"], select, input[type="file"] {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #666; /* Lighter gray border */
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #555; /* Slightly lighter gray for inputs */
+            color: #e0e0e0;
+        }
+
+        input[type="text"]::placeholder {
+            color: #bbb; /* Even lighter placeholder text */
+        }
+
+        input[type="submit"] {
+            background-color: #00bcd4; /* Bright cyan for buttons */
+            color: #ffffff;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0097a7; /* Slightly darker cyan on hover */
+        }
+
+    </style>
+    <script language="javascript">
+        function validate(formObj) {
+            if(formObj.t1.value.length == 0) {
+                alert("Please Enter Patient name");
+                formObj.t1.focus();
+                return false;
+            }
+            if(formObj.t2.value.length == 0) {
+                alert("Please upload patient image");
+                formObj.t2.focus();
+                return false;
+            }
+            if(formObj.t3.value.length == 0) {
+                alert("Please Enter Age");
+                formObj.t3.focus();
+                return false;
+            }
+            if(formObj.t4.value.length == 0) {
+                alert("Please Select Sex");
+                formObj.t4.focus();
+                return false;
+            }
+            if(formObj.t5.value.length == 0) {
+                alert("Please Enter Mobile Number");
+                formObj.t5.focus();
+                return false;
+            }
+            formObj.actionUpdateData.value = "update";
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <h1><span>Detection of Liver Tumors</span></h1>
+        </div>
+    </div>
+    <div class="menu_nav">
+        <ul>      
+            <li><a href="{% url 'UpdateProfile' %}">UPDATE PROFILE</a></li>
+            <li><a href="{% url 'Detection' %}">DETECT TUMOR</a></li>
+            <li><a href="{% url 'index' %}">LOGOUT</a></li>
+            <li><a href="{% url 'patientlist' %}">DISPLAY PATIENTS</a></li>
+        </ul>      
+    </div>
+    <div class="container">
+        <div class="background-image">
+            <img src="{% static 'images/bgmain.jpeg' %}" alt="Background Image">
+        </div>
+        <div class="form-container">
+            <form name="f1" method="post" action="{% url 'DetectionAction' %}" enctype="multipart/form-data" onsubmit="return validate(this);">
+                {% csrf_token %}
+                <h2>Tumor Detection Screen</h2>
+                <p class="error">{{ data }}</p>
+                <table>
+                    <tr>
+                        <td><label for="patientName">Patient Name</label></td>
+                        <td><input type="text" id="patientName" name="t1" placeholder="Enter Patient Name"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="patientImage">Browse Image</label></td>
+                        <td><input type="file" id="patientImage" name="t2"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="age">Age</label></td>
+                        <td><input type="text" id="age" name="t3" placeholder="Enter Age"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="sex">Sex</label></td>
+                        <td>
+                            <select id="sex" name="t4">
+                                <option value="">Select Sex</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="mobileNumber">Mobile Number</label></td>
+                        <td><input type="text" id="mobileNumber" name="t5" placeholder="Enter Mobile Number"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Submit"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
